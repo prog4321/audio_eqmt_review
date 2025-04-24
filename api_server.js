@@ -7,7 +7,7 @@ const port = 10000;
 
 const db = new pg.Client({
   user: "aer_user",
-  host: "dpg-d050fcmuk2gs73e4h7d0-a.singapore-postgres.render.com",
+  host: "dpg-d050fcmuk2gs73e4h7d0-a",
   database: "audio_eqmt_review",
   password: "aer",
   port: 5432,
