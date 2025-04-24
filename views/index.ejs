@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Audiophile Equipment Review</title>
+  <link rel="stylesheet" href="/styles/main.css">
+</head>
+
+<body>
+
+  <div class="container">
+
+    <div class="header" id="mainPageHeader">
+      Audiophile Equipment Review
+    </div>
+
+    <div id="newReviewButtonSection">
+      <a id="newReviewButton" class="button" href="/new">New review</a>
+    </div>
+
+    <ul id="reviewList">
+
+      <% reviews.forEach(review=> { %>
+
+        <li>
+          <div id="mainPageProductInfoLine1">
+            <%=review.brandName%> <%=review.productName%>
+          </div>
+
+          <div id="mainPageProductInfoLine2">
+            <% if (review.productSeries != null) { %>
+              <%=review.productSeries%> Series | 
+            <% } %>
+            <%=review.subcategoryName%>
+            </div>
+
+          <div id="mainPageProductLinkSection">
+            <a href=<%=review.productLink%> target="_blank">Product webpage</a>
+          </div>
+
+          <div id="mainPageReviewInfoSection">
+            Review by: <%=review.reviewer%>, <%=review.month%> <%=review.year%>
+          </div>
+
+          <div>
+            <div id="mainPageSummaryLabel">Summary:</div>
+            <textarea disabled id="mainPageSummaryValue" class="summaryValue" name="summary" rows="7" maxlength="600"><%=review.summary%></textarea>
+          </div>
+
+          <% if (review.link != "") { %>
+            <div id="mainPageReviewLinkSection">
+              <a href="<%=review.link%>" target="_blank">Full review</a>
+            </div>
+          <% } %>
+
+          <% if (review.rating != null) { %>
+            <div id="mainPageRatingSection">Rating: <%=review.rating%> stars</div>
+          <% } %>
+
+          <div id="mainPageButtonSection">
+              <a id="editReviewButton" class="button" href="/edit/<%= review.id %>">Edit</a><a class="deleteReviewButton button" href="/delete-review/<%= review.id %>">Delete</a>
+          </div>
+
+          <hr>
+
+        </li>
+
+        <% }); %>
+
+    </ul>
+
+  </div>
+
+</body>
+
+</html>

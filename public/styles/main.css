@@ -1,0 +1,277 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+  font-size: 0.9rem;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0.7rem auto;
+  background-color: rgb(226, 226, 226);
+  border-radius: 8px;
+  padding-bottom: 0.4rem;
+  box-shadow: 0.2rem 0.2rem 0.5rem rgba(0, 0, 0, 0.1);
+}
+
+#updateReviewContainer {
+  display:grid;
+  grid-template-rows: 1.1fr 0.8fr 0.7fr 0.6fr 3fr 0.6fr 0.6fr 0.6fr 0.6fr 1.5fr;
+  grid-template-columns: 5.7rem auto;
+  width:100%;
+}
+
+#updateReviewContainer > * {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#addReviewContainer {
+  display:grid;
+  grid-template-rows: 1fr 2fr 0.9fr 0.7fr 0.6fr 3fr 0.6fr 0.6fr 0.6fr 0.6fr 1.5fr;
+  grid-template-columns: 7rem auto;
+  width:100%;
+}
+
+#addReviewContainer > * {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.header, .productInfoLine1, .productInfoLine2, .buttonSection {
+  grid-column-start: 1;
+  grid-column-end: -1;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  font-size: 2rem;
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+  padding-left: 0.8rem;
+  color: black;
+  background-color: orange;
+}
+
+#mainPageHeader {
+  padding-left: 2rem;
+  height: 3.3rem;
+}
+
+#newReviewButtonSection {
+  background-color: rgb(199, 198, 198);
+  padding-top:0.5rem;
+  padding-bottom:0.5rem;
+}
+
+#mainPageProductLinkSection,
+#mainPageSummaryValue,
+#mainPageReviewLinkSection {
+  margin-top: 0.5rem;
+}
+
+#mainPageReviewInfoSection {
+  margin-top: 0.7rem;
+  font-size: 0.8rem;
+  font-style: italic;
+  color: darkslategrey;
+}
+
+#mainPageSummaryLabel {
+  margin-top: 0.7rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+#mainPageRatingSection {
+  margin-top: 0.6rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: rgb(17, 17, 188);
+}
+
+#mainPageSummaryValue {
+  background-color: rgb(226, 226, 226);
+  padding-left: 0;
+  border: none;
+  resize: none;
+}
+
+.filterSection {
+  grid-column-start: 1;
+  grid-column-end: -1;
+  font-family: monospace;
+  background-color: rgb(199, 198, 198);
+}
+
+.filterContainer {
+  display:grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: 0.27fr 0.24fr auto;
+  height:100%;
+  width: 100%;
+  align-items: center;
+  padding-left: 0.8rem;
+}
+
+.filterInfo {
+  grid-row-start: 1;
+  grid-row-end: -1;
+  color:darkblue;
+}
+
+#mainPageProductInfoLine1 {
+  font-size: 1.5rem;
+  margin-top: 0.7rem;
+  margin-bottom: 0.3rem;
+}
+
+#mainPageProductInfoLine2 {
+  font-size: 1.1rem;
+  color:darkslategrey;
+}
+
+.productInfoLine1 {
+  display:flex;
+  flex-direction: column;
+  font-size: 1.5rem;
+  justify-content: start;
+  align-items: end;
+  padding-left: 0.8rem;
+  margin-top:10px;
+}
+
+.productInfoLine1Value {
+  margin-bottom: 4px;
+}
+
+.productInfoLine2 {
+  font-size: 1.1rem;
+  align-items: start;
+  color:darkslategrey;
+  padding-left: 0.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.brandFilter {
+  margin-top: 1rem;
+  margin-bottom: 0.2rem;
+}
+
+.fieldLabel {
+  padding-left: 0.8rem;
+  padding-right: 0.5rem;
+}
+
+.fieldValue {
+  font-family: "Roboto", sans-serif;
+  width: 100%;
+  font-size: 0.9rem;
+  padding: 2px 3px;
+  height: 1rem;
+}
+
+.linkField {
+  padding-right: 1.6rem;
+}
+
+.summaryLabel {
+  padding-left: 0.8rem;
+}
+
+.summaryField {
+  padding-right: 1.6rem;
+  margin-top: 0.48rem;
+  margin-bottom: 0.35rem;
+}
+
+.summaryValue {
+  width: 100%;
+  font-family: "Roboto", sans-serif;
+  font-size: 0.9rem;
+  box-sizing: border-box;
+  padding-left: 0.24rem;
+  resize: none;
+}
+
+.dropdownList {
+  width: 3.5rem;
+  padding: 0.02rem;
+  height:1.4rem;
+  font-family: "Roboto", sans-serif;
+  font-size: 0.9rem;
+}
+
+.filterDropdownList {
+  width: 12rem;
+  padding: 0.02rem;
+  height:1.4rem;
+  font-family: monospace;
+  font-size: 0.9rem;
+}
+
+.reviewerValue {
+  width: 15rem;
+}
+
+.yearValue {
+  width: 2.9rem;
+  font-size: 0.9rem;
+  padding: 2px 3px;
+  height: 1rem;
+  font-family: "Roboto", sans-serif;
+}
+
+.button {
+  text-decoration: none;
+  color: #fff;
+  padding: 10px;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#updateReviewButton, #addReviewButton {
+  background-color: #007bff;
+  margin-left: 0.7rem;
+}
+
+.cancelButton, .deleteReviewButton {
+  background-color: #e74c3c;
+  margin-left: 0.3rem;
+}
+
+#newReviewButton {
+  display:inline-block;
+  background-color: #2ecc71;
+  margin-left: 2rem;
+}
+
+#editReviewButton {
+  background-color: #007bff;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 2.2rem;
+  padding-right: 2.2rem;
+}
+
+hr {
+  background-color: orange;
+  height:1px;
+}
+
+#mainPageButtonSection {
+  margin-top: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.buttonSection {
+  margin-top: 1rem;
+}

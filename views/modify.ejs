@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Audiophile Equipment Review</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles/main.css">
+</head>
+
+<body>
+
+  <div class="container">
+
+  <% if (locals.review) { %> <!-- Updating a review -->
+  <form id="updateReviewForm" method="post" action="/update-review">
+
+    <!-- Some hidden placeholders to store required values -->
+    <input type="text" id="id" name="id" value="<%=review.id%>" style="display:none">
+    <input type="text" id="productId" name="productId" value="<%=review.productId%>" style="display:none">
+
+    <div id="updateReviewContainer">
+
+      <div class="header">
+        <%= heading %>
+      </div>
+  
+      <div class="productInfoLine1">
+        <div class="productInfoLine1Value"><%=review.brandName%>&nbsp<%=review.productName%></div>
+      </div>
+
+      <div class="productInfoLine2">
+        <div class="productInfoLine2Value">
+          <% if (review.productSeries != null) { %>
+            <%=review.productSeries %> Series | 
+          <% } %>
+          <%= review.subcategoryName %>
+        </div>
+      </div>
+  
+      <div class="fieldLabel">Link:</div>
+      <div class="linkField">
+        <input class="fieldValue" type="text" name="link"  maxlength="150" value="<%=review.link%>"></input>
+      </div>
+  
+      <div class="summaryLabel fieldLabel">Summary:</div>
+      <div class="summaryField">
+        <textarea class="summaryValue" name="summary" rows="7" maxlength="600"><%=review.summary%></textarea>
+      </div>
+
+      <div class="fieldLabel">Rating:</div>
+      <div>
+        <select id="ratingDropdown" class="dropdownList" name="rating">
+          <option value=""></option>
+          <% ratings.forEach(rating=> { %>
+            <option value=<%=rating.id%>><%=rating.id%></option>
+          <% }); %>
+        </select>&nbspstars
+        <script>
+          document.getElementById("ratingDropdown").value = "<%=review.rating%>";
+        </script>
+      </div>
+
+      <div class="fieldLabel">Reviewer:</div>
+      <div>
+        <input class="reviewerValue" class="fieldValue" type="text" name="reviewer" maxlength="50" value="<%=review.reviewer%>">
+      </div>
+
+      <div class="fieldLabel">Month:</div>
+      <div>
+        <select id="monthDropdown" class="dropdownList" name="month">
+          <option value=""></option>
+          <% months.forEach(month=> { %>
+            <option value=<%=month.id%>><%=month.name%></option>
+          <% }); %>
+        </select>
+        <script>
+          document.getElementById("monthDropdown").value = "<%=review.monthId%>";
+        </script>
+      </div>
+
+      <div class="fieldLabel">Year:</div>
+      <div >
+        <input class="yearValue" type="text" name="year" maxlength="4" value="<%=review.year%>">
+      </div>
+
+      <div class="buttonSection">
+        <button id="updateReviewButton" class="button" type="submit">
+          <%=submit%>
+        </button>
+        <a class="cancelButton button" href="/">Cancel</a>
+      </div>
+    </div>
+
+  </form>
+
+  <% } else { %> <!-- Add a review -->
+    <form id="addReviewForm" method="post" action="/add-review">
+
+      <!-- Some hidden placeholders to store required values -->
+      <input type="text" id="productId" name="productId" style="display:none">
+  
+      <div id="addReviewContainer">
+  
+        <div class="header">
+          <%=heading%>
+        </div>
+
+        <div class="filterSection">
+          <div class="filterContainer">
+            <div class="filterInfo">First apply the filters to select the product >>></div>
+            <div class="fieldLabel">Brand:</div>
+            <div>
+              <select id="brandDropdown" class="filterDropdownList">
+                <option value=""></option>
+                <% brands.forEach(brand=> { %>
+                  <option value=<%=brand.id%>><%=brand.name%></option>
+                <% }); %>
+              </select>
+            </div>
+
+            <div class="fieldLabel">Subcategory:</div>
+            <div>
+              <select id="subcategoryDropdown" class="filterDropdownList">
+                <option value=""></option>
+              </select><br>
+            </div>
+
+            <div class="fieldLabel">Product:</div>
+            <div>
+              <select id="productDropdown" class="filterDropdownList">
+                <option value=""></option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="productInfoLine1">
+          <div class="productInfoLine1Value"><span id="brandName"></span> <span id="productName"></span></div>
+        </div>
+
+        <div class="productInfoLine2">
+          <div class="productInfoLine2Value"><span id="productSeries"></span><span id="subcategoryName"></span>
+          </div>
+        </div>
+
+        <div class="fieldLabel">Link:</div>
+        <div class="linkField">
+          <input class="fieldValue" type="text" name="link"  maxlength="150"></input>
+        </div>
+    
+        <div class="summaryLabel fieldLabel">Summary:</div>
+        <div class="summaryField">
+          <textarea class="summaryValue" name="summary" rows="7" maxlength="600"></textarea>
+        </div>
+  
+        <div class="fieldLabel">Rating:</div>
+        <div>
+          <select id="ratingDropdown" class="dropdownList" name="rating">
+            <option value=""></option>
+            <% ratings.forEach(rating=> { %>
+              <option value=<%=rating.id%>><%=rating.id%></option>
+            <% }); %>
+          </select>&nbspstars
+        </div>
+  
+        <div class="fieldLabel">Reviewer:</div>
+        <div>
+          <input class="reviewerValue" class="fieldValue" type="text" name="reviewer" maxlength="50">
+        </div>
+  
+        <div class="fieldLabel">Month:</div>
+        <div>
+          <select id="monthDropdown" class="dropdownList" name="month">
+            <option value=""></option>
+            <% months.forEach(month=> { %>
+              <option value=<%=month.id%>><%=month.name%></option>
+            <% }); %>
+          </select>
+        </div>
+  
+        <div class="fieldLabel">Year:</div>
+        <div >
+          <input class="yearValue" type="text" name="year" maxlength="4">
+        </div>
+  
+        <div class="buttonSection">
+          <button id="addReviewButton" class="button" type="submit">
+            <%=submit%>
+          </button>
+          <a class="cancelButton button" href="/">Cancel</a>
+        </div>
+      </div>
+  
+    </form>
+  <% } %>
+
+  </div>
+
+  <script>
+
+    // The code in this script section allows for the dynamic update of the dropdown filters. Part of the code
+    // (especially in the 'fetch_data' function) is adapted from this tutorial:
+    // Tutorial on "Dynamic Dependent Dropdown Select Box in Node.js Express with MySQL"
+    // Video: https://www.youtube.com/watch?v=UmLsPEC0_V4
+    // Code: https://www.webslesson.info/2022/06/country-state-city-dynamic-dependent-dropdown-in-node-js-with-mysql.html
+
+    function getEBI(element) {
+      try {
+        return document.getElementById(element);
+      } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: error });
+      };
+    };
+
+    // function fetch_data(valueList, childElement, type) {
+    function fetch_data(params, childElement) {
+      try {
+        var queryString = '';
+        const type = params.type;
+        Object.entries(params).forEach(([key, value]) => {
+          if (key === 'type') {
+            queryString = '?type=' + value;
+          } else {
+            queryString = queryString + '&' + key + '=' + value;
+          };
+        });
+        fetch('/data' + queryString)
+        .then(function(response) {
+          return response.json();
+        })
+        .then(function(responseData) {
+          var html = '';
+          if(type === 'load_subcategory') {
+            html = '<option value=""></option>';
+          } else if (type === 'load_product') {
+            html = '<option value=""></option>';
+          } else if (type === 'load_series') {
+              if (responseData[0].name != null) {
+                html = responseData[0].name + " Series | ";
+              };
+          };
+          if (type === 'load_subcategory' || type === 'load_product') {
+            responseData.forEach(row=> {
+              html += '<option value="' + row.id + '">' + row.name + '</option>';
+            });
+          };
+          childElement.innerHTML = html;
+        });
+      } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: error });
+      };
+    };
+
+    getEBI('brandDropdown').onchange = function() {
+      try {
+        clearProductDropdown();
+        clearProductInfo();
+        const params = {
+                        type: 'load_subcategory',
+                        brand: getEBI('brandDropdown').value
+                      };
+        fetch_data(params, getEBI('subcategoryDropdown'));
+      } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: error });
+      };
+    };
+
+    getEBI('subcategoryDropdown').onchange = function() {
+      try {
+        clearProductInfo();
+        const params = {
+                        type: 'load_product',
+                        brand: getEBI('brandDropdown').value,
+                        subcategory: getEBI('subcategoryDropdown').value
+                      };
+        fetch_data(params, getEBI('productDropdown'));
+      } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: error });
+      };
+    };
+
+    getEBI('productDropdown').onchange = function() {
+      try {
+        clearProductInfo();
+        if (getEBI('productDropdown').value != "") {
+          const params = {
+                        type: 'load_series',
+                        product: getEBI('productDropdown').value
+                      };
+          fetch_data(params, getEBI('productSeries'));
+          generateProductInfo();
+        };
+      } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: error });
+      };
+    };
+
+    function clearSubcategoryDropdown() {
+      try {
+        getEBI('subcategoryDropdown').innerHTML = '<option value="">Select Subcategory</option>';
+      } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: error });
+      };
+    };
+
+    function clearProductDropdown() {
+      try {
+        getEBI('productDropdown').innerHTML = '<option value=""></option>';
+      } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: error });
+      };
+    };
+
+    function clearProductInfo() {
+      try {
+        getEBI('brandName').innerHTML = '';
+        getEBI('productName').innerHTML = '';
+        getEBI('productSeries').innerHTML = '';
+        getEBI('subcategoryName').innerHTML = '';
+        getEBI('productId').value = '';
+      } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: error });
+      };
+    };
+
+    function generateProductInfo() {
+      try {
+        getEBI('brandName').innerHTML = getEBI('brandDropdown').selectedOptions[0].innerHTML;
+        getEBI('productName').innerHTML = getEBI('productDropdown').selectedOptions[0].innerHTML;
+        getEBI('subcategoryName').innerHTML =  getEBI('subcategoryDropdown').selectedOptions[0].innerHTML;
+        getEBI('productId').value =  getEBI('productDropdown').value;
+      } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: error });
+      };
+    };
+
+  </script>
+
+</body>
+
+</html>
