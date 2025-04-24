@@ -10,8 +10,7 @@ const db = new pg.Client({
   host: "dpg-d050fcmuk2gs73e4h7d0-a",
   database: "audio_eqmt_review",
   password: "aer",
-  port: 5432,
-  ssl: true
+  port: 5432
 });
 db.connect();
 
