@@ -1,13 +1,21 @@
 ## Audiophile Equipment Review
-A system to consolidate concise summaries of audiophile equipment reviews.
 
-Please check out the deployed website: https://aer-lkl5.onrender.com/
+Please have a look at the deployed website: https://aer-lkl5.onrender.com/
 
-The RESTful API server can be found at: https://audio-eqmt-review.onrender.com/
+Audio equipment that is used in high-fidelity sound reproduction can be costly. Prior to making a purchase, it's usual for audiophiles to peruse the internet and read reviews on equipment they are considering.
 
-The relational database set up in Postgres features some simple sample data.
+But these reviews, especially the ones by professional reviewers, can be quite lengthy. The system I have developed here can be used to store concise summaries of these reviews (at no more than 600 characters), as well as the users' own notes. It allows for a quick grasp of the general consensus about a certain product, and also provides relevant resources (links to the product page and the actual review) should the user require more information.
+
+(I hope to include a search/filter function on the main page eventually.)
+
+The data is stored in a relational Postgres database, made accessible via a public <b>RESTful API</b> (https://audio-eqmt-review.onrender.com/). This API allows for CRUD operations (Create, Read, Update, Delete) by using POST, GET, PATCH and DELETE methods respectively. For more information on the API endpoints, please look at the "api_server.js" file.
+
+The backend web server code can be found in the "index.js" file, with the frontend using the "index.ejs" and "modify.ejs" files in the "views" folder. Formatting is controlled via the "main.css" file in the "public/styles" folder. You can view the deployed website at https://aer-lkl5.onrender.com/
+
+The database contains some sample data. I plan to add the SQL scripts for generating the tables, as well as an Entity Relationship Diagram (ERD) showing the relationships between the tables. An "aer_user" profile is granted SELECT, INSERT, UPDATE AND DELETE access to the "review" table, and SELECT acccess on all the other tables in the database. This "aer_user" profile is used in the API to access the database.
 
 #### Technologies used:
 Backend: Node.js/Express.js/Axios/Javascript<br>
 Frontend: HTML/CSS/Javascript<br>
-Database: PostgreSQL
+Database: PostgreSQL<br>
+The API server, backend web server and Postgres database are all hosted on render.com.
