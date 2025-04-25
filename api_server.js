@@ -5,14 +5,31 @@ import pg from "pg";
 const app = express();
 const port = 10000;
 
-const db = new pg.Client({
-  user: "aer_user",
-  host: "dpg-d050fcmuk2gs73e4h7d0-a",
-  database: "audio_eqmt_review",
-  password: "aer",
-  port: 5432
-});
-db.connect();
+const runLocal = false; // NB: Set this to false if code needs to be deployed live
+
+// "aer_user" is a postgres user profile with SELECT privileges on all
+// tables, and INSERT, UPDATE and DELETE privileges on the "review" table
+if (runLocal) {
+  var db = new pg.Client({
+    user: "aer_user", 
+    host: "localhost",
+    database: "audio_eqmt_review",
+    password: "aer",
+    port: 5432
+  });
+  db.connect();
+} else {
+  var db = new pg.Client({
+    user: "aer_user",
+    host: "dpg-d050fcmuk2gs73e4h7d0-a", // Hostname of the Postgres server
+    database: "audio_eqmt_review",
+    password: "aer",
+    port: 5432
+    // include "ssl: true" as an additional parameter if the web server
+    // making the api call is not deployed on render
+  });
+  db.connect();
+};
 
 // Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
