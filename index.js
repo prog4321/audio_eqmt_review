@@ -10,7 +10,7 @@ const runLocal = false; // NB: Set this to false if code needs to be deployed li
 if (runLocal) {
   var apiURL = "http://localhost:10000";
 } else {
-  var apiURL = "https://api-audio-eqmt-review.onrender.com";
+  var apiURL = "https://audio-eqmt-review.onrender.com";
 };
 
 app.use(express.static("public"));
