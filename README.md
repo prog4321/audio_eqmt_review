@@ -13,7 +13,7 @@ The data is stored in a relational Postgres database, made accessible via a publ
 
 The backend web server code can be found in the "index.js" file, with the frontend using the "index.ejs" and "modify.ejs" files in the "views" folder. Formatting is controlled via the "main.css" file in the "public/styles" folder. You can view the deployed website at https://aer-lkl5.onrender.com/
 
-The database contains some sample data. I plan to add the SQL scripts for generating the tables, as well as an Entity Relationship Diagram (ERD) showing the relationships between the tables. An "aer_user" profile is granted SELECT, INSERT, UPDATE AND DELETE permissions to the "review" table, and SELECT acccess on all the other tables in the database. This "aer_user" profile is used in the API to access the database.
+The database contains some sample data. I plan to add the SQL scripts for generating the tables, as well as an Entity Relationship Diagram (ERD) showing the relationships between the tables. An "aer_user" profile is granted SELECT, INSERT, UPDATE AND DELETE permissions to the "review" table, and SELECT acccess on all other tables in the database. This "aer_user" profile is used in the API to access the database.
 
 #### Technologies used:
 Backend: Node.js/Express.js/Axios/Javascript<br>
