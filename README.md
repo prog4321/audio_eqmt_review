@@ -3,9 +3,9 @@
 Please have a look at the deployed website for this repository:<br>
 https://aer-lkl5.onrender.com/
 
-Audio equipment used in high-fidelity sound reproduction can be costly. Prior to making a purchase, it's usual for audiophiles to peruse the internet and read reviews on equipment they are considering.
+Audio equipment used in high-fidelity sound reproduction can include components like turntables, amplifiers and loudspeakers etc. Such equipment can be costly. Prior to making a purchase, it's usual for hi-fi enthusiasts (aka audiophiles) to peruse the internet and read reviews on equipment they are considering.
 
-But these reviews, especially the ones by professional reviewers, can be quite lengthy. The system I have developed here can be used to store concise summaries of these reviews (at no more than 600 characters), as well as the users' own notes. It allows for a quick grasp of the general consensus about a certain product, and also includes relevant resources (links to the product page and the actual review) should the user require more information.
+But these reviews, especially the ones by professional reviewers, can be quite lengthy. The system I have developed here can be used to store concise summaries of these reviews (at no more than 600 characters), as well as the users' own notes. This allows for a quick grasp of the general consensus about a certain product. The system also includes links to the product page and the actual review, should the user require more information.
 
 (I hope to include a search/filter function on the main page eventually, so that the user can search for reviews for a certain product/product series/category etc.)
 
