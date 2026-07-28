@@ -4,7 +4,7 @@ Audio equipment used in high-fidelity sound reproduction can include components 
 
 But these reviews, especially the ones by professional reviewers, can be quite lengthy. The system I have developed here can be used to store concise summaries of these reviews (at no more than 600 characters), as well as the users' own notes. This allows for a quick grasp of the general consensus about a certain product. The system also includes links to the product page and the actual review, should the user require more information.
 
-The data is stored in a relational Postgres database, made accessible via a public <b>RESTful API</b> at https://aer-api.onrender.com/. This API allows for CRUD operations (Create, Read, Update, Delete) by using POST, GET, PATCH and DELETE methods respectively. For more information on the API endpoints, please look at the "api_server.js" file.
+The data is stored in a relational Postgres database, made accessible via a public <b>RESTful API</b>. This API allows for CRUD operations (Create, Read, Update, Delete) by using POST, GET, PATCH and DELETE methods respectively. For more information on the API endpoints, please look at the "api_server.js" file.
 
 The backend web server code can be found in the "index.js" file, with the frontend using the "index.ejs" and "modify.ejs" files in the "views" folder. Formatting is controlled via the "main.css" file in the "public/styles" folder.
 
